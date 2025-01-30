@@ -13,8 +13,10 @@ app.get("/", (req, res) => {
 });
 
 app.post("/submit-order", (req, res) => {
-  console.log(req.body);
   appointments.push(req.body);
+  res.send(
+    `<h1>Thank you for scheduling an appointment ${req.body.fname}</h1>`
+  );
 });
 
 app.get("/admin/appointments", (req, res) => {
