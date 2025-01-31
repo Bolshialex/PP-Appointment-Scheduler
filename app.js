@@ -7,7 +7,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 const PORT = 3030;
 let appointments = [];
-
+const timeStamp = new Date();
+const formatDate = timeStamp.toLocaleDateString();
 
 
 app.get("/", (req, res) => {
@@ -16,18 +17,24 @@ app.get("/", (req, res) => {
 
 app.post("/submit-order", (req, res) => {
   appointments.push(req.body);
-  const timeStamp = new Date();
-  const formatDate = timeStamp.toLocaleDateString();
-  console.log(formatDate)
   res.send(
     `<h1>Thank you for scheduling an appointment ${req.body.fname}</h1>`
   );
 });
 
 app.get("/admin/appointments", (req, res) => {
-  res.send(appointments);
+
+  let applyToPage = "";
+  for(let items of appointments)
+  {
+    applyToPage += `<p>Name: ${items.fname} <br> Date: ${items.date} <br> Time Of submission:${formatDate}</p>`;
+  }
+
+  res.send(applyToPage);
 });
 
 app.listen(PORT, () => {
   console.log(PORT, `Server is running at http://localhost:${PORT}`.bgMagenta);
 });
+
+
