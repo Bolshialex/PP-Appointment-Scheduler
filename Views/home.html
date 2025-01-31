@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <form method="post" action="/submit-order">
+    <form id="appointments" method="post" action="/submit-order" onsubmit="return preventSubmitIfEmpty()">
       <fieldset>
         <legend>Contact Info</legend>
         <label>
@@ -32,5 +32,6 @@
         <button type="submit">Submit</button>
       </fieldset>
     </form>
+    <script src="../app.js"></script>
   </body>
 </html>

@@ -11,6 +11,7 @@ const timeStamp = new Date();
 const formatDate = timeStamp.toLocaleDateString();
 
 
+
 app.get("/", (req, res) => {
   res.sendFile(`${import.meta.dirname}/views/home.html`);
 });
@@ -30,7 +31,7 @@ app.get("/admin/appointments", (req, res) => {
   let applyToPage = "";
   for(let items of appointments)
   {
-    applyToPage += `<p>Name: ${items.fname} <br> Date: ${items.date} <br> Time Of submission:${formatDate}</p>`;
+    applyToPage += `<p>Name: ${items.fname} ${items.lname} <br> Date: ${items.date} <br> Time Of submission:${formatDate}</p>`;
   }
 
   res.send(applyToPage);
