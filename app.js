@@ -16,8 +16,9 @@ app.get("/", (req, res) => {
 
 app.post("/submit-order", (req, res) => {
   appointments.push(req.body);
-  const timeStamp = Date.now();
-  console.log(timeStamp)
+  const timeStamp = new Date();
+  const formatDate = timeStamp.toLocaleDateString();
+  console.log(formatDate)
   res.send(
     `<h1>Thank you for scheduling an appointment ${req.body.fname}</h1>`
   );
