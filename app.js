@@ -18,7 +18,10 @@ app.get("/", (req, res) => {
 app.post("/submit-order", (req, res) => {
   appointments.push(req.body);
   res.send(
-    `<h1>Thank you for scheduling an appointment ${req.body.fname}</h1>`
+    `<h1>Thank you for scheduling an appointment ${req.body.fname} </h1>
+    <br>
+    <h3> We will see you on ${req.body.date} at ${req.body.appTime} </h3>
+    `
   );
 });
 
